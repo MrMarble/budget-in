@@ -26,7 +26,8 @@
     "react": "17.0.2",
     "react-chartjs-2": "^3.2.0",
     "react-dom": "17.0.2",
-    "tiny-uid": "^1.1.1"
+    "tiny-uid": "^1.1.1",
+    "zustand": "^3.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
