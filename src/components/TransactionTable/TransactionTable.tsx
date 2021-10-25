@@ -9,7 +9,7 @@ export interface TransactionTableProps {
 export default function TransactionTable({
   useHook = useTransactionTable,
 }: TransactionTableProps) {
-  const { rows, cols } = useHook();
+  const { rows, cols, handleAdd } = useHook();
 
   return (
     <Paper sx={{ borderRadius: "16px", padding: "1.5rem" }} elevation={3}>
@@ -22,7 +22,7 @@ export default function TransactionTable({
         >
           Transactions
         </Typography>
-        <Button>Add</Button>
+        <Button onClick={handleAdd}>Add</Button>
       </Box>
       <Box>
         <DataGrid rows={rows} columns={cols} autoHeight />

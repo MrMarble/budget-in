@@ -1,15 +1,23 @@
-import type { GridColDef, GridRowsProp } from "@mui/x-data-grid";
-import type { Transaction } from "./../../types/Transaction";
-import { useState } from "react";
+import { TransactionType } from "./../../types/Transaction";
 import getColumns from "./helpers/getColumns";
+import { useStore } from "../../store/useStore";
+import uid from "tiny-uid";
 
 export default function useTransactionTable() {
-  // TODO: change to final state provider
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const rows = useStore((store) => store.transactions);
+  const addRow = useStore((store) => store.addTransaction);
 
   const cols = getColumns();
 
-  const rows: GridRowsProp = transactions;
+  const handleAdd = () => {
+    const id = uid();
+    addRow({
+      id,
+      name: id,
+      amount: 0,
+      type: TransactionType.EXPENSE,
+    });
+  };
 
-  return { rows, cols };
+  return { rows, cols, handleAdd };
 }
