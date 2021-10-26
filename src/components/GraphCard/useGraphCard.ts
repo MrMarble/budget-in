@@ -62,6 +62,7 @@ export const useLineChart = () => {
         label: "Expenses",
         borderColor: "red",
         backgroundColor: "red",
+        tension: 0.3,
         data: getMonths().map((_, i) =>
           parseTransactions(
             transactions.filter(({ type }) => type === TransactionType.EXPENSE),
