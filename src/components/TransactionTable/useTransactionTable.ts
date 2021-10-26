@@ -9,15 +9,5 @@ export default function useTransactionTable() {
 
   const cols = getColumns();
 
-  const handleAdd = () => {
-    const id = uid();
-    addRow({
-      id,
-      name: id,
-      amount: 0,
-      type: TransactionType.EXPENSE,
-    });
-  };
-
-  return { rows, cols, handleAdd };
+  return { rows, cols };
 }

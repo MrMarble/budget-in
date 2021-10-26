@@ -1,8 +1,7 @@
 import { Grid, Container } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import TransactionTable from "../components/TransactionTable";
+import TransactionsCard from "../components/TransactionsCard/TransactionsCard";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -14,7 +13,7 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Grid item xs={12}>
-          <TransactionTable />
+          <TransactionsCard />
         </Grid>
       </Grid>
     </Container>
