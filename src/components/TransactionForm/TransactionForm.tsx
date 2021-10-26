@@ -22,6 +22,7 @@ export interface TransactionFormProps {
   onSubmit: SubmitHandler<Transaction>;
   title?: string;
   text?: string;
+  initialValues?: Transaction;
 }
 
 export default function TransactionForm({
@@ -30,8 +31,12 @@ export default function TransactionForm({
   title,
   text,
   onSubmit,
+  initialValues,
 }: TransactionFormProps) {
-  const { control, handleSubmit, register } = useTransactionForm(isOpen);
+  const { control, handleSubmit, register } = useTransactionForm(
+    isOpen,
+    initialValues
+  );
   return (
     <Dialog open={isOpen} onClose={onClose}>
       {title && <DialogTitle>{title}</DialogTitle>}
