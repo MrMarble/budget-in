@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export enum TransactionType {
   INCOME = "income",
   EXPENSE = "expense",
@@ -10,6 +8,6 @@ export type Transaction = {
   type: TransactionType;
   name: string;
   amount: number;
-  startDate?: Dayjs;
-  endDate?: Dayjs;
+  startDate?: string;
+  endDate?: string;
 };
