@@ -11,6 +11,8 @@ const transaction: Transaction = {
   name: "",
   type: TransactionType.INCOME,
   amount: 0,
+  startDate: undefined,
+  endDate: undefined,
 };
 
 type transactionKeys = keyof Transaction;

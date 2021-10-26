@@ -1,3 +1,4 @@
+import { DatePicker } from "@mui/lab";
 import {
   Button,
   Dialog,
@@ -95,6 +96,30 @@ export default function TransactionForm({
                   ),
                 }}
                 onChange={(e) => field.onChange(parseFloat(e.target.value))}
+              />
+            )}
+          />
+          <Controller
+            name="startDate"
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                label="Start Date"
+                {...field}
+                views={["year", "month"]}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            )}
+          />
+          <Controller
+            name="endDate"
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                label="End Date"
+                views={["year", "month"]}
+                {...field}
+                renderInput={(params) => <TextField {...params} />}
               />
             )}
           />
