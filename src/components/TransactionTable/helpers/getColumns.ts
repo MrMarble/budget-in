@@ -29,5 +29,7 @@ export default function getColumns(
         typeof transaction[key as keyof Transaction] === "number"
           ? "center"
           : "left",
+      valueFormatter: ({ field, value }) =>
+        field === "amount" ? `${value} €` : value,
     }));
 }
