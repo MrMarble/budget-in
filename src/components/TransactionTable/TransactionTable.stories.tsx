@@ -3,6 +3,7 @@ import type { TransactionTableProps } from "./TransactionTable";
 import type { Meta, Story } from "@storybook/react";
 import getColumns from "./helpers/getColumns";
 import { Transaction, TransactionType } from "../../types/Transaction";
+import { GridCellParams } from "@mui/x-data-grid";
 
 interface StoryProps extends TransactionTableProps {
   mockRows: number;
@@ -13,6 +14,17 @@ let rows: Transaction[] = [];
 const useTransactionTable = () => ({
   rows,
   cols: getColumns(),
+  handleEdit: ({ id }: GridCellParams) => {
+    return;
+  },
+  isOpen: false,
+  onSubmit: () => {
+    return;
+  },
+  onClose: () => {
+    return;
+  },
+  selectedTransaction: undefined,
 });
 
 const Template: Story<StoryProps> = (args) => {
