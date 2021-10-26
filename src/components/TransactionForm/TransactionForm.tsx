@@ -95,7 +95,9 @@ export default function TransactionForm({
                     <InputAdornment position="start">€</InputAdornment>
                   ),
                 }}
-                onChange={(e) => field.onChange(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  field.onChange(parseFloat(e.target.value || "0"))
+                }
               />
             )}
           />
