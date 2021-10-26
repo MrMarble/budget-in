@@ -76,20 +76,3 @@ export const useLineChart = () => {
   };
   return { data };
 };
-
-export const useBarChart = () => {
-  const transactions = useStore((store) => store.transactions);
-
-  const data: ChartData<"bar"> = {
-    labels: getMonths(),
-    datasets: transactions.map((t) => ({
-      stack: t.type,
-      label: t.name,
-      backgroundColor: getRandomColor(
-        t.type === TransactionType.INCOME ? "#77DD77" : "#FF6961"
-      ),
-      data: getMonths().map((_, i) => parseTransaction(t, dayjs().month(i))),
-    })),
-  };
-  return { data };
-};
