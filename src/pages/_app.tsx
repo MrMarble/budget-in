@@ -5,12 +5,16 @@ import "@fontsource/roboto/700.css";
 
 import type { AppProps } from "next/app";
 import CssBaseline from "@mui/material/CssBaseline";
+import DateAdapter from "@mui/lab/AdapterDayjs";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <CssBaseline />
-      <Component {...pageProps} />
+      <LocalizationProvider dateAdapter={DateAdapter}>
+        <Component {...pageProps} />
+      </LocalizationProvider>
     </>
   );
 }
