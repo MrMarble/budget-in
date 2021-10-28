@@ -6,13 +6,17 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  FormControl,
   InputAdornment,
+  InputLabel,
   MenuItem,
+  Select,
   TextField,
 } from "@mui/material";
-import { useEffect } from "react";
+import { Box } from "@mui/system";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import uid from "tiny-uid";
+import booleanToString from "../../helpers/booleanToString";
 import { Transaction, TransactionType } from "../../types/Transaction";
 import useTransactionForm from "./useTransactionForm";
 
@@ -33,7 +37,7 @@ export default function TransactionForm({
   onSubmit,
   initialValues,
 }: TransactionFormProps) {
-  const { control, handleSubmit, register } = useTransactionForm(
+  const { control, handleSubmit, register, kind } = useTransactionForm(
     isOpen,
     initialValues
   );
@@ -47,6 +51,7 @@ export default function TransactionForm({
             name="type"
             control={control}
             rules={{ required: true }}
+            defaultValue={TransactionType.EXPENSE}
             render={({ field }) => (
               <TextField
                 select
@@ -54,6 +59,8 @@ export default function TransactionForm({
                 label="Type"
                 required
                 margin="normal"
+                sx={{ mt: 0 }}
+                defaultValue={TransactionType.EXPENSE}
                 fullWidth
               >
                 {Object.entries(TransactionType).map(([key, value]) => (
@@ -107,29 +114,69 @@ export default function TransactionForm({
             )}
           />
           <Controller
-            name="startDate"
+            name="repeat"
             control={control}
             render={({ field }) => (
-              <DatePicker
-                label="Start Date"
-                {...field}
-                views={["year", "month"]}
-                renderInput={(params) => <TextField {...params} />}
-              />
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="kind-lanbel">Kind</InputLabel>
+                <Select
+                  labelId="kind"
+                  id="kind"
+                  label="Kind"
+                  {...field}
+                  value={booleanToString(field.value)}
+                  onChange={(e) => field.onChange(e.target.value === "true")}
+                >
+                  <MenuItem value="true">Recurrent</MenuItem>
+                  <MenuItem value="false">One Time</MenuItem>
+                </Select>
+              </FormControl>
             )}
           />
-          <Controller
-            name="endDate"
-            control={control}
-            render={({ field }) => (
-              <DatePicker
-                label="End Date"
-                views={["year", "month"]}
-                {...field}
-                renderInput={(params) => <TextField {...params} />}
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 1 }}>
+            {kind && (
+              <>
+                <Controller
+                  name="startDate"
+                  control={control}
+                  render={({ field }) => (
+                    <DatePicker
+                      label="Start Date"
+                      {...field}
+                      views={["year", "month"]}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  )}
+                />
+                <Controller
+                  name="endDate"
+                  control={control}
+                  render={({ field }) => (
+                    <DatePicker
+                      label="End Date"
+                      views={["year", "month"]}
+                      {...field}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  )}
+                />
+              </>
+            )}
+            {!kind && (
+              <Controller
+                name="startDate"
+                control={control}
+                render={({ field }) => (
+                  <DatePicker
+                    label="Date"
+                    {...field}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                )}
               />
             )}
-          />
+          </Box>
+
           <input type="hidden" value={uid()} {...register("id")} />
         </DialogContent>
         <DialogActions>

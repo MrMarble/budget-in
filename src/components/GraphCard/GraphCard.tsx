@@ -1,22 +1,12 @@
 import { ShowChart, BarChart } from "@mui/icons-material";
 import { Paper, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
-import LineChart from "../LineChart/LineChart";
-import BarGraph from "../BarChart/BarChart";
+import LineChart from "../Chart/LineChart/LineChart";
+import BarGraph from "../Chart/BarChart/BarChart";
+import useGraphCard from "./useGraphCard";
 
 export default function GraphCard() {
-  const [selectedChart, setSelectedChart] = useState("line");
-
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newChart: string | null
-  ) => {
-    if (newChart !== null) {
-      setSelectedChart(newChart);
-    }
-  };
-
+  const { selectedChart, handleChange } = useGraphCard();
   return (
     <Paper sx={{ borderRadius: "16px", padding: "1.5rem" }} elevation={3}>
       <Box mb={1}>

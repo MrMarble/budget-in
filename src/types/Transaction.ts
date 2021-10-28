@@ -8,6 +8,7 @@ export type Transaction = {
   type: TransactionType;
   name: string;
   amount: number;
-  startDate?: string;
-  endDate?: string;
+  startDate: string | null;
+  endDate: string | null;
+  repeat: boolean;
 };
