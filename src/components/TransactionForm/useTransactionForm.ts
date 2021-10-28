@@ -23,13 +23,11 @@ export default function useTransactionForm(
 
   if (initialValues) {
     Object.entries(initialValues).forEach(([name, value]) => {
-      //setValue(name as keyof Transaction, value);
+      setValue(name as keyof Transaction, value);
     });
   }
 
   useEffect(() => reset(), [isOpen, reset]);
-
-  console.log(kind);
 
   return {
     control,

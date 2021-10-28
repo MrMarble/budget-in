@@ -7,6 +7,7 @@ import useGraphCard from "./useGraphCard";
 
 export default function GraphCard() {
   const { selectedChart, handleChange } = useGraphCard();
+
   return (
     <Paper sx={{ borderRadius: "16px", padding: "1.5rem" }} elevation={3}>
       <Box mb={1}>
