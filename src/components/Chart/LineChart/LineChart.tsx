@@ -3,5 +3,13 @@ import { useLineChart } from "./useLineChart";
 
 export default function LineChart() {
   const { data } = useLineChart();
-  return <Line data={data} options={{ scales: { y: { min: 0 } } }} />;
+  return (
+    <Line
+      data={data}
+      options={{
+        scales: { y: { min: 0 } },
+        maintainAspectRatio: false,
+      }}
+    />
+  );
 }

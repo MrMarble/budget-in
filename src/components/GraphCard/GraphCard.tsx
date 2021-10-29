@@ -24,7 +24,7 @@ export default function GraphCard() {
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
-      <Box>
+      <Box sx={{ minHeight: "20vh" }}>
         {selectedChart === "line" && <LineChart />}
         {selectedChart === "bar" && <BarGraph />}
       </Box>

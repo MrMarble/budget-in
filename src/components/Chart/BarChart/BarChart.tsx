@@ -13,6 +13,7 @@ export default function LineChart() {
             display: false,
           },
         },
+        maintainAspectRatio: false,
       }}
     />
   );
