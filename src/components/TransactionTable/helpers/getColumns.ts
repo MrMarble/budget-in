@@ -11,14 +11,15 @@ const transaction: Transaction = {
   name: "",
   type: TransactionType.INCOME,
   amount: 0,
-  startDate: undefined,
-  endDate: undefined,
+  startDate: null,
+  endDate: null,
+  repeat: true,
 };
 
 type transactionKeys = keyof Transaction;
 
 export default function getColumns(
-  filter: transactionKeys[] = ["id"]
+  filter: transactionKeys[] = ["id", "repeat"] //TODO: ignore repeat when updating the table
 ): GridColDef[] {
   return Object.keys(transaction)
     .filter((key) => !filter || !filter.includes(key as keyof Transaction))
