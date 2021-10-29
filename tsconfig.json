@@ -20,5 +20,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.stories.tsx"] //TODO: remove this when we have a storybook
 }
