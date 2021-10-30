@@ -1,4 +1,5 @@
 import { Bar } from "react-chartjs-2";
+
 import { useBarChart } from "./useBarChart";
 
 export default function LineChart() {

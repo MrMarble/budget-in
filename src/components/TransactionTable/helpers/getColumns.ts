@@ -1,6 +1,8 @@
 import type { GridColDef } from "@mui/x-data-grid";
+
 import camelToCapitalize from "../../../helpers/camelToCapitalize";
 import { Transaction, TransactionType } from "../../../types/Transaction";
+
 interface Props {
   filter?: [keyof Transaction, string];
 }

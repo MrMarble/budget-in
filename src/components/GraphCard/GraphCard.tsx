@@ -1,8 +1,9 @@
-import { ShowChart, BarChart } from "@mui/icons-material";
+import { BarChart, ShowChart } from "@mui/icons-material";
 import { Paper, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { Box } from "@mui/system";
-import LineChart from "../Chart/LineChart/LineChart";
+
 import BarGraph from "../Chart/BarChart/BarChart";
+import LineChart from "../Chart/LineChart/LineChart";
 import useGraphCard from "./useGraphCard";
 
 export default function GraphCard() {

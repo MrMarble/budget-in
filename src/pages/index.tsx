@@ -1,6 +1,7 @@
-import { Grid, Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
+
 import GraphCard from "../components/GraphCard/GraphCard";
 import TransactionsCard from "../components/TransactionsCard/TransactionsCard";
 

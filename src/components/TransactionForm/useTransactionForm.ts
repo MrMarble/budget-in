@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
-import { Transaction, TransactionType } from "./../../types/Transaction";
-import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+
+import { Transaction, TransactionType } from "./../../types/Transaction";
 
 export default function useTransactionForm(
   isOpen: boolean = false,

@@ -1,9 +1,10 @@
-import TransactionTable from ".";
-import type { TransactionTableProps } from "./TransactionTable";
-import type { Meta, Story } from "@storybook/react";
-import getColumns from "./helpers/getColumns";
-import { Transaction, TransactionType } from "../../types/Transaction";
 import { GridCellParams } from "@mui/x-data-grid";
+import type { Meta, Story } from "@storybook/react";
+
+import { Transaction, TransactionType } from "../../types/Transaction";
+import TransactionTable from ".";
+import getColumns from "./helpers/getColumns";
+import type { TransactionTableProps } from "./TransactionTable";
 
 interface StoryProps extends TransactionTableProps {
   mockRows: number;
