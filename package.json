@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": ["yarn lint --fix", "prettier -w"]
+    "*.{ts,tsx,js,jsx}": ["yarn eslint --fix", "prettier -w"]
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",

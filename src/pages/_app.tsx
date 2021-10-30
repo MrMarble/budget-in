@@ -10,16 +10,18 @@ import CssBaseline from "@mui/material/CssBaseline";
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const darkTheme = createTheme({ palette: { mode: prefersDarkMode ? "dark" : "light" } });
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const darkTheme = createTheme({
+    palette: { mode: prefersDarkMode ? "dark" : "light" },
+  });
   return (
     <>
-        <ThemeProvider theme={darkTheme}>
-      <LocalizationProvider dateAdapter={DateAdapter}>
-        <CssBaseline />
+      <ThemeProvider theme={darkTheme}>
+        <LocalizationProvider dateAdapter={DateAdapter}>
+          <CssBaseline />
           <Component {...pageProps} />
-      </LocalizationProvider>
-        </ThemeProvider>
+        </LocalizationProvider>
+      </ThemeProvider>
     </>
   );
 }
