@@ -22,7 +22,7 @@ const transaction: Transaction = {
 
 type transactionKeys = keyof Transaction;
 
-const columns: { [key: transactionKeys]: Partial<GridColDef> } = {
+const columns: { [key: string]: Partial<GridColDef> } = {
   amount: {
     align: "center",
     type: "number",
@@ -41,6 +41,9 @@ const columns: { [key: transactionKeys]: Partial<GridColDef> } = {
         label: value,
       }),
   },
+  repeat: {},
+  id: {},
+  name: {},
 };
 
 export default function getColumns(
