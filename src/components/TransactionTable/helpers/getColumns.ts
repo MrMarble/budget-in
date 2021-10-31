@@ -1,4 +1,6 @@
+import { Chip } from "@mui/material";
 import type { GridColDef } from "@mui/x-data-grid";
+import React from "react";
 
 import camelToCapitalize from "../../../helpers/camelToCapitalize";
 import { Transaction, TransactionType } from "../../../types/Transaction";
@@ -20,6 +22,27 @@ const transaction: Transaction = {
 
 type transactionKeys = keyof Transaction;
 
+const columns: { [key: transactionKeys]: Partial<GridColDef> } = {
+  amount: {
+    align: "center",
+    type: "number",
+    valueFormatter: ({ value }) => `${value} €`,
+  },
+  startDate: {
+    type: "date",
+  },
+  endDate: {
+    type: "date",
+  },
+  type: {
+    renderCell: ({ value }) =>
+      React.createElement(Chip, {
+        color: value === TransactionType.INCOME ? "success" : "error",
+        label: value,
+      }),
+  },
+};
+
 export default function getColumns(
   filter: transactionKeys[] = ["id", "repeat"] //TODO: ignore repeat when updating the table
 ): GridColDef[] {
@@ -28,11 +51,9 @@ export default function getColumns(
     .map((key) => ({
       field: key,
       headerName: camelToCapitalize(key),
-      align:
-        typeof transaction[key as keyof Transaction] === "number"
-          ? "center"
-          : "left",
-      valueFormatter: ({ field, value }) =>
-        field === "amount" ? `${value} €` : value,
+      flex: 1,
+      align: "left",
+      headerAlign: "left",
+      ...columns?.[key as transactionKeys],
     }));
 }
