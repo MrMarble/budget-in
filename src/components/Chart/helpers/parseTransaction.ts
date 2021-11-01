@@ -1,26 +1,28 @@
 import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
 import { Transaction } from "./../../../types/Transaction";
+
+dayjs.extend(isBetween);
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
 
 export const parseTransaction = (
   { amount, startDate, endDate, repeat }: Transaction,
   date: ReturnType<typeof dayjs>
 ) => {
-  if (startDate && endDate) {
-    if (date.isBetween(startDate, endDate, "month", "[]")) {
-      return amount;
-    }
-  } else if (startDate && !endDate) {
-    if (repeat && date.isSameOrAfter(startDate, "month")) {
-      return amount;
-    }
-    if (date.isSame(startDate, "month")) {
-      return amount;
-    }
-  } else if (!startDate && endDate) {
-    if (date.isSameOrBefore(endDate, "month")) {
-      return amount;
-    }
+  if (date.isSame(startDate, "month")) {
+    return amount;
+  }
+
+  if (
+    repeat &&
+    (date.isSameOrAfter(startDate, "month") ||
+      (endDate && date.isBetween(startDate, endDate, "month", "[]")))
+  ) {
+    return amount;
   }
   return 0;
 };

@@ -1,17 +1,9 @@
 import type { ChartData } from "chart.js";
 import dayjs from "dayjs";
-import isBetween from "dayjs/plugin/isBetween";
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
-import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
-import { getRandomColor } from "../../../helpers/getRandomColor";
 import { useStore } from "./../../../store/useStore";
 import { Transaction, TransactionType } from "./../../../types/Transaction";
 import { parseTransaction } from "./../helpers/parseTransaction";
-
-dayjs.extend(isBetween);
-dayjs.extend(isSameOrAfter);
-dayjs.extend(isSameOrBefore);
 
 const parseTransactions = (
   t: Transaction[],
